@@ -1,0 +1,14 @@
+server:
+  port: 8083
+
+stripe:
+  secret:
+    key: ${STRIPE_SECRET_KEY}
+
+  webhook:
+    secret: ${STRIPE_WEBHOOK_SECRET}
+
+logging:
+  level:
+    root: INFO
+    com.stripe_provider_service: DEBUG

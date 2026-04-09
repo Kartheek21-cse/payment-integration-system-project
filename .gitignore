@@ -1,0 +1,19 @@
+# environment secrets
+.env
+.env.*
+*.env
+
+# build files
+target/
+
+# logs
+*.log
+
+# eclipse
+.classpath
+.project
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db

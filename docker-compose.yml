@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+
+  payment-validation-service:
+    build: ./payment-validation-service
+    container_name: payment-validation-service
+    ports:
+      - "8081:8081"
+    networks:
+      - payment-network
+
+  payment-processing-service:
+    build: ./payment-processing-service
+    container_name: payment-processing-service
+    ports:
+      - "8082:8082"
+    networks:
+      - payment-network
+
+  stripe-provider-service:
+    build: ./stripe-provider-service
+    container_name: stripe-provider-service
+    ports:
+      - "8083:8083"
+    env_file:
+      - .env
+    depends_on:
+      - payment-processing-service
+    networks:
+      - payment-network
+
+networks:
+  payment-network:
+    driver: bridge
